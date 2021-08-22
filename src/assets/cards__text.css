@@ -1,0 +1,11 @@
+.cards__text {
+  min-height: 300px;
+  margin: 0;
+  background-color: #B7C09D;
+  padding: 24px 31px 0 24px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: #242424;
+  letter-spacing: -0.01em;
+}

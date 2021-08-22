@@ -1,0 +1,8 @@
+.searh__btn_disabled {
+  opacity: .2;
+}
+
+.searh__btn_disabled:hover {
+  cursor: auto;
+  opacity: .2;
+}

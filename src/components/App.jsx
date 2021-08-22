@@ -1,51 +1,52 @@
-import React, { useState, useEffect } from 'react'
-import { Search } from "./Search";
+import React, { useState } from 'react'
 import data from '../utils/data.json'
-import { Card } from './Card';
+import { Search } from "./Search";
+import { Cards } from './Cards';
+import { Authors } from './Authors';
 
 function App() {
   const [cards, setCards] = useState([])
-
-  useEffect(() => {
-    setCards(data.result)
-  }, [cards])
-
   const [value, setValue] = useState('')
+  const [title, setTitle] = useState('Поиск')
 
-  const filteredListByTitle = cards.filter((card) => {
-    return card.title.toLowerCase().includes(value.toLowerCase())
-  })
+  const onSearchSubmit = (searchValue) => {
+    const filteredListByTitle = data.result.filter((card) => {
+      return card.title.toLowerCase().includes(searchValue.toLowerCase())
+            || card.author_firstName.toLowerCase().includes(searchValue.toLowerCase())
+            || card.author_lastName.toLowerCase().includes(searchValue.toLowerCase())
+    })
 
-  const filteredListByAuthor = cards.filter((card) => {
-    return card.author_firstName.toLowerCase().includes(value.toLowerCase())
-  })
+    if (filteredListByTitle.length !== 0) {
+      setTitle(`По запоросу «${value}» мы нашли`)
+    } else {
+      setTitle(`По запоросу «${value}» мы ничего не нашли`)
+    }
 
-  const handleSearch = (e) => {
-    setValue(e.target.value)
+    setCards(filteredListByTitle)
   }
 
+  const handleChange = (inputValue) => {
+    setValue(inputValue)
+  } 
+
   return (
-    <>
+    <div className="wrapper">
       <Search
-        handleSearch={ handleSearch }
+        onSearchSubmit={ onSearchSubmit }
+        handleChange={ handleChange }
+        cards={ cards }
+        title={ title }
+        value={ value }
       />
-      <ul className="cards">
-        {
-          filteredListByTitle.map((card) => (<Card key={card._id}
-            card={card}
-          />))
-        }
-      </ul>
-      <ul>
-        {/* не работает */}
-        {
-          filteredListByAuthor.map((card) => (<> key={card._id}
-            <li> 
-            </li>
-          </>))
-        }
-      </ul>
-    </>
+      <div className="results">
+        <Cards 
+          cards={ cards }
+        />
+        <Authors
+          cards={ cards }
+        />
+      </div>
+    </div>
   );
 }
 

@@ -5,9 +5,22 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #ECEBE8;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+@import url(./assets/wrapper.css);
+@import url(./assets/search.css);
+@import url(./assets/search__input-wrapper.css);
+@import url(./assets/search__title.css);
+@import url(./assets/search__input.css);
+@import url(./assets/searh__btn.css);
+@import url(./assets/searh__btn_disabled.css);
+@import url(./assets/results.css);
+@import url(./assets/cards.css);
+@import url(./assets/cards__text.css);
+@import url(./assets/cards__author.css);
+@import url(./assets/cards__info.css);
+@import url(./assets/authors.css);
+@import url(./assets/authors__item.css);
+@import url(./assets/authors__group.css);
+@import url(./assets/authors__name.css);

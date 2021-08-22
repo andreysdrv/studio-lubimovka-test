@@ -1,0 +1,23 @@
+.searh__btn {
+  font-weight: 300;
+  color: #242424;
+  font-size: 16px;
+  line-height: 14px;
+  background-color: transparent;
+  border: none;
+  width: 120px;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background-image: url(./arrow-right.svg);
+  background-position: left;
+  background-repeat: no-repeat;
+  border-left: 1px solid #242424;
+  transition: .2s;
+}
+
+.searh__btn:hover {
+  cursor: pointer;
+  opacity: .5;
+}
