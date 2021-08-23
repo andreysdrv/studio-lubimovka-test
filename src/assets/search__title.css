@@ -7,4 +7,6 @@
   letter-spacing: -0.01em;
   max-width: 740px;
   width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
