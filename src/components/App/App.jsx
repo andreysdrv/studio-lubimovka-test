@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import data from '../utils/data.json'
-import { Search } from "./Search";
-import { Cards } from './Cards';
-import { Authors } from './Authors';
+import data from '../../utils/data.json'
+import { Search } from "../Search/Search";
+import { Cards } from '../Cards/Cards';
+import { Authors } from '../Authors/Authors';
 
 function App() {
   const [cards, setCards] = useState([])

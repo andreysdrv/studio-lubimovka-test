@@ -1,6 +1,7 @@
-import { Author } from "./Author"
+import { Author } from "../Author/Author"
 
 export const Authors = ({ cards }) => {
+  
   const sortedCards = cards.sort((a, b) => {
     if (a.author_lastName > b.author_lastName) {
       return 1
@@ -14,13 +15,16 @@ export const Authors = ({ cards }) => {
   let groupedArr = []
 
   for (let key of sortedCards) {
-    if (!groupedArr.includes(key.author_lastName + ' ' + key.author_firstName)) {
-      groupedArr.push(key.author_lastName + ' ' + key.author_firstName)
+    const authorInArr = key.author_lastName + ' ' + key.author_firstName
+    if (!groupedArr.includes(authorInArr)) {
+      groupedArr.push(authorInArr)
     }
   }
 
   const newData = Object
-    .values(groupedArr.reduce((acc, n) => ((acc[n[0]] = acc[n[0]] || []).push(n), acc), {}))
+    .values(groupedArr.reduce((acc, n) => {
+      return ((acc[n[0]] = acc[n[0]] || []).push(n), acc)
+    }, {}))
 
   return (
     <ul className="authors">
