@@ -1,12 +1,15 @@
-export const Author = ({ card, groupData, children, groupIdx }) => {
-
+export const Author = ({ group, data, children, groupIdx }) => {
 
   return (
     <li className="authors__item">
-      <p className="authors__group">{ card.author_lastName.charAt(0) }</p>
-      {/* <p>{ groupIdx }</p> */}
-      <p className="authors__name">{ card.author_lastName } {card.author_firstName}</p>
-      {children}
+      <p className="authors__group">{ group[0].charAt(0) }</p>
+      {
+        group.map((author) => (<p className="authors__name">
+          {
+            author
+          }
+        </p>))
+      }
     </li>
   )
 }

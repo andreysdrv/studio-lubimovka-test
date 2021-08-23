@@ -11,44 +11,24 @@ export const Authors = ({ cards }) => {
     return 0
   })
 
-  const data = sortedCards.reduce((r, e) => {
-    let group = e.author_lastName[0]
-    if (!r[group]) {
-      r[group] = {group, children: [e]}
-    } else {
-      r[group].children.push(e);
+  let groupedArr = []
+
+  for (let key of sortedCards) {
+    if (!groupedArr.includes(key.author_lastName + ' ' + key.author_firstName)) {
+      groupedArr.push(key.author_lastName + ' ' + key.author_firstName)
     }
-    return r;
-  }, {})
+  }
 
-  console.log('Object.keys', Object.keys(data))
-
-  const groupData = Object.keys(data).reduce((acc, cur, i) => {
-    acc[i] = {
-      id: cur
-    }
-    return acc
-  }, [])
-
-  console.log(groupData)
+  const newData = Object
+    .values(groupedArr.reduce((acc, n) => ((acc[n[0]] = acc[n[0]] || []).push(n), acc), {}))
 
   return (
     <ul className="authors">
-      {/* {
-        groupData.map((item) => (<p>{item.id}</p>))
-      } */}
       {
-        sortedCards.map((card, idx) => (<Author
-          key={ card._id }
-          card={ card }
-          groupData={ groupData }
-          // groupIdx={ Object.keys(data)[idx] }
+        newData.map((group) => (<Author
+          key={ group[0] }
+          group={ group }
         >
-          {/* {
-            groupData.map((group) => (<p key={ group.id }>
-              { group.id }
-            </p>))
-          } */}
         </Author>))
       }
     </ul>
